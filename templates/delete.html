@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <title>Supprimer Donnée</title>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-8">
+        <h1 class="text-2xl font-bold mb-4">Confirmer la Suppression</h1>
+        <p>Êtes-vous sûr de vouloir supprimer la donnée :</p>
+        <p class="font-semibold">ParentLocation: {{ data['ParentLocation'] }}</p>
+        <p class="font-semibold">Location: {{ data['Location'] }}</p>
+        <p class="font-semibold">Period: {{ data['Period'] }}</p>
+        <p class="font-semibold">Sex: {{ data['Sex'] }}</p>
+        <p class="font-semibold">Adult mortality rate: {{ data['Adult mortality rate'] }}</p>
+        <p class="font-semibold">DateModified: {{ data['DateModified'] }}</p>
+
+        <form method="post" action="/delete/{{ data['_id'] }}">
+            <button type="submit" class="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300 mt-4">Confirmer la Suppression</button>
+        </form>
+    </div>
+</body>
+</html>

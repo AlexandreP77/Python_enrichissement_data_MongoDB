@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modifier Donnée</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-semibold mb-4">Modifier la Donnée</h1>
+        <form method="post" action="/edit/{{ data['_id'] }}" class="bg-white p-4 rounded-lg shadow-md">
+            <div class="mb-4">
+                <label for="ParentLocation" class="block font-semibold mb-2">ParentLocation:</label>
+                <input type="text" id="ParentLocation" name="ParentLocation" value="{{ data['ParentLocation'] }}" class="w-full border rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="Location" class="block font-semibold mb-2">Location:</label>
+                <input type="text" id="Location" name="Location" value="{{ data['Location'] }}" class="w-full border rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="Period" class="block font-semibold mb-2">Period:</label>
+                <input type="text" id="Period" name="Period" value="{{ data['Period'] }}" class="w-full border rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="Sex" class="block font-semibold mb-2">Sex:</label>
+                <input type="radio" id="Sex" name="Sex" value="Male" class="border rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500">Male
+                <input type="radio" id="Sex" name="Sex" value="Female" class="border rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500" required>Female
+            </div>
+            <div class="mb-4">
+                <label for="Adult mortality rate" class="block font-semibold mb-2">Adult mortality rate:</label>
+                <input type="text" id="Adult mortality rate" name="Adult mortality rate" value="{{ data['Adult mortality rate'] }}" class="w-full border rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="DateModified" class="block font-semibold mb-2">DateModified:</label>
+                <input type="datetime-local" id="DateModified" placeholder="{{ data['DateModified'] }}" name="DateModified" value="{{ data['DateModified'] }}" class="w-full border rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="text-center">
+                <input type="submit" value="Mettre à jour"  class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 cursor-pointer">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

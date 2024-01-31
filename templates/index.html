@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <title>TP Groupe</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+</head>
+<body class="bggray-100">
+
+    <div class="container mx-auto">
+        <a href="/graph" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 mb-4 inline-block">Voir le Graphique</a>
+        <h2 class="text-xl font-bold mb-4">Ajouter une nouvelle donnée</h2>
+        <form method="post" action="/insert" class="mb-8">
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label for="ParentLocation" class="block text-gray-700 font-semibold">ParentLocation:</label>
+                    <input type="text" id="ParentLocation" name="ParentLocation" class="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-400">
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label for="Location" class="block text-gray-700 font-semibold">Location:</label>
+                    <input type="text" id="Location" name="Location" class="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-400">
+                </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label for="Period" class="block text-gray-700 font-semibold">Period:</label>
+                    <input type="text" id="Period" name="Period" class="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-400">
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label for="Sex" class="block text-gray-700 font-semibold">Sex:</label>
+                    <div class="">
+                        <label class="inline-flex items-center">
+                            <input type="radio" id="SexMale" value="Male" name="Sex" class="form-radio">
+                            <span class="ml-2">Male</span>
+                        </label>
+                        <label class="inline-flex items-center ml-6">
+                            <input type="radio" id="SexFemale" value="Female" name="Sex" class="form-radio">
+                            <span class="ml-2">Female</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label for="Adult mortality rate" class="block text-gray-700 font-semibold">Adult mortality rate:</label>
+                    <input type="text" id="Adult mortality rate" name="Adult mortality rate" class="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-400">
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label for="DateModified" class="block text-gray-700 font-semibold">DateModified:</label>
+                    <input type="datetime-local" id="DateModified" name="DateModified" class="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-400">
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">Ajouter</button>
+            </div>
+        </form>
+        
+
+        <h1 class="text-2xl font-bold mb-4">Liste de données</h1>
+        <table id="myTable" class="w-full bg-white border border-gray-300">
+            <thead>
+                <tr> 
+                    <th class="py-2 px-4 bg-gray-200">Life expectancy<br><small>Données enrichis</small></th>
+                    <th class="py-2 px-4 bg-gray-200">Adult mortality pourcentage<br><small>calcul</small></th>
+                    <th class="py-2 px-4 bg-gray-200">ParentLocation</th>
+                    <th class="py-2 px-4 bg-gray-200">Location</th>
+                    <th class="py-2 px-4 bg-gray-200">Period</th>
+                    <th class="py-2 px-4 bg-gray-200">Sex</th>
+                    <th class="py-2 px-4 bg-gray-200">Adult mortality rate</th>
+                    <th class="py-2 px-4 bg-gray-200">DateModified</th>
+                    <th class="py-2 px-4 bg-gray-200">Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>       
+                        <td class="py-2 px-4">{{ row['Life expectancy'] }}</td>
+                        <td class="py-2 px-4">{{ row['Adult Mortality Percentage'] }}</td>
+                        <td class="py-2 px-4">{{ row['ParentLocation'] }}</td>
+                        <td class="py-2 px-4" title="test">{{ row['Location'] }}</td>
+                        <td class="py-2 px-4">{{ row['Period'] }}</td>
+                        <td class="py-2 px-4">{{ row['Sex'] }}</td>
+                        <td class="py-2 px-4">{{ row['Adult mortality rate'] }}</td>
+                        <td class="py-2 px-4">{{ row['DateModified'] }}</td>
+                        <td class="py-2 px-4">
+                            <a href="/edit/{{ row['_id'] }}" class="text-blue-500 hover:underline">Modifier</a> |
+                            <a href="/delete/{{ row['_id'] }}" class="text-red-500 hover:underline">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            
+        </table>
+        
+        
+    </div>
+</body>
+<script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+    </script>
+</html>
