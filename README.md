@@ -4,6 +4,7 @@ Faire la commande :
 Running on http://127.0.0.1:5000
 
 
+
 # Librairie nécessaire pour initialisé le projet
 
 Flask : Un framework web pour créer des applications web en Python.
@@ -23,3 +24,5 @@ Matplotlib : Une bibliothèque pour créer des graphiques en Python.
 
 Seaborn : Une bibliothèque de visualisation de données basée sur Matplotlib.
 "pip install seaborn"
+
+![image](https://github.com/AlexandreP77/Python_enrichissement_data_MongoDB/assets/98040380/f4b03d76-c069-4dfc-831a-af487b3fea23)
